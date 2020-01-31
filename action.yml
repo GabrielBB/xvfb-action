@@ -1,4 +1,4 @@
-name: 'gabrielbb/xvfb-action'
+name: 'gabrielbb/xvfb'
 description: 'Install xvfb and run commands with it'
 inputs:
   run:
