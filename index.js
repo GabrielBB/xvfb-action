@@ -1,11 +1,41 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
 
-try {
-    const command = core.getInput('run');
-    
-    exec.exec("sudo apt-get install xvfb");
-    exec.exec("xvfb-run", ["--auto-servernum", command]);
-} catch (error) {
-    core.setFailed(error.message);
+async function main() {
+    try {
+        const command = core.getInput('run');
+
+        if (process.platform == "linux") {
+            await runForLinux(command);
+        } else {
+            await runForWin32OrDarwin(command);
+        }
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
+
+async function runForLinux(command) {
+    await exec.exec("sudo apt-get install xvfb");
+    await exec.exec("xvfb-run", ["--auto-servernum", command]);
+    await cleanUpXvfb();
+}
+
+async function cleanUpXvfb() {
+    await exec.exec("ps aux | grep tmp/xvfb-run | grep -v grep | awk '{print $2}", {
+        listeners: {
+            stdout: async (data) => {
+                const pid = data.toString();
+                if (pid !== "") {
+                    await exec.exec(`sudo kill ${pid}`);
+                }
+            }
+        }
+    });
+}
+
+async function runForWin32OrDarwin(command) {
+    await exec.exec(command);
+}
+
+main();
