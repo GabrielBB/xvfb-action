@@ -2,16 +2,22 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 
 async function main() {
-    try {
-        const command = core.getInput('run');
 
-        if (process.platform == "linux") {
-            await runForLinux(command);
-        } else {
-            await runForWin32OrDarwin(command);
+    const command = core.getInput('run');
+
+    if (command) {
+        try {
+            if (process.platform == "linux") {
+                await runForLinux(command);
+            } else {
+                await runForWin32OrDarwin(command);
+            }
         }
-    } catch (error) {
-        core.setFailed(error.message);
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    } else {
+        core.setFailed("run parameter is required for xvfb");
     }
 }
 
