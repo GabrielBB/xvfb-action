@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run headless test
-        uses: gabrielbb/xvfb-action@v1
+        uses: GabrielBB/xvfb-action@v1
         with:
           run: npm test
 ```

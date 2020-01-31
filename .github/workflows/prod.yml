@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test XVFB
+        uses: GabrielBB/xvfb-action@v0.2-alpha      
+        with:
+          run: echo 'Testing xvfb'

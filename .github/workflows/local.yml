@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: xvfb test action step
+      - name: Test XVFB
         uses: ./ # Uses an action in the root directory
         with:
           run: echo 'Testing xvfb'
