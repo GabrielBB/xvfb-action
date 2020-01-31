@@ -11,4 +11,4 @@ jobs:
       - name: xvfb test action step
         uses: ./ # Uses an action in the root directory
         with:
-          run: 'npm test'
+          run: "echo 'lol'"

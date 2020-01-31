@@ -26,7 +26,7 @@ async function runForLinux(command) {
 }
 
 async function cleanUpXvfb() {
-    await exec.exec(`${__dirname}/cleanup.sh`);
+    await exec.exec("bash", [`${__dirname}/cleanup.sh`]);
 }
 
 async function runForWin32OrDarwin(command) {
