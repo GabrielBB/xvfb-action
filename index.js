@@ -17,8 +17,12 @@ async function main() {
 
 async function runForLinux(command) {
     await exec.exec("sudo apt-get install xvfb");
-    await exec.exec("xvfb-run", ["--auto-servernum", command]);
-    await cleanUpXvfb();
+    
+    try {
+        await exec.exec("xvfb-run", ["--auto-servernum", command]);
+    } finally {
+        await cleanUpXvfb();
+    }
 }
 
 async function cleanUpXvfb() {
