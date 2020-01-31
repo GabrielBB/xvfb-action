@@ -1,4 +1,4 @@
-name: 'gabrielbb/xvfb'
+name: 'gabrielbb/xvfb-action'
 description: 'Run your headless tests with XVFB'
 branding:
   icon: airplay
