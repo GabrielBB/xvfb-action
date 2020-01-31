@@ -1,5 +1,5 @@
 name: 'gabrielbb/xvfb'
-description: 'Install xvfb and run commands with it'
+description: 'Run your headless tests with XVFB'
 inputs:
   run:
     description: 'Command to execute using xvfb'
