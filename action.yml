@@ -1,5 +1,7 @@
 name: 'gabrielbb/xvfb'
 description: 'Run your headless tests with XVFB'
+icon: airplay,
+color: black
 inputs:
   run:
     description: 'Command to execute using xvfb'
