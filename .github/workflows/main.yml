@@ -6,7 +6,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-  steps:
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: xvfb test action step
