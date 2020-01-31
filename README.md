@@ -1,21 +1,24 @@
-# Hello world javascript action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+# XVFB Github Action
 
-## Inputs
+This Github Action installs [XVFB](http://elementalselenium.com/tips/38-headless)  and runs your headless tests with it. It cleans up the xvfb process after your tests are done. If it detects you're not using linux then your tests still run, but without xvfb, which is very practical for workflows that run on different platforms.
 
-### `who-to-greet`
+### Example usage
 
-**Required** The name of the person to greet. Default `"World"`.
+```yml
+on: [push]
 
-## Outputs
-
-### `time`
-
-The time we greeted you.
-
-## Example usage
-
-uses: gabrielbb/xvfb-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run headless test
+        uses: gabrielbb/xvfb@v1
+        with:
+          run: npm test
+```
