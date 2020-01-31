@@ -32,7 +32,11 @@ async function runForLinux(command) {
 }
 
 async function cleanUpXvfb() {
-    await exec.exec("bash", [`${__dirname}/cleanup.sh`]);
+    try {
+        await exec.exec("bash", [`${__dirname}/cleanup.sh`]);
+    } catch {
+
+    }
 }
 
 async function runForWin32OrDarwin(command) {
