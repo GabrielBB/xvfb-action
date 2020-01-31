@@ -17,7 +17,7 @@ async function main() {
 
 async function runForLinux(command) {
     await exec.exec("sudo apt-get install xvfb");
-    
+
     try {
         await exec.exec("xvfb-run", ["--auto-servernum", command]);
     } finally {
@@ -26,7 +26,7 @@ async function runForLinux(command) {
 }
 
 async function cleanUpXvfb() {
-    await exec.exec("ps aux | grep tmp/xvfb-run | grep -v grep | awk '{print $2}", {
+    await exec.exec("ps aux || grep tmp/xvfb-run || grep -v grep || awk '{print $2}", {
         listeners: {
             stdout: async (data) => {
                 const pid = data.toString();
