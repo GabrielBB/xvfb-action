@@ -3,29 +3,27 @@ const exec = require('@actions/exec');
 
 async function main() {
 
-    const command = core.getInput('run');
+    try {
+        const command = core.getInput('run', { required: true });
+        const directory = core.getInput('working-directory');
 
-    if (command) {
-        try {
-            if (process.platform == "linux") {
-                await runForLinux(command);
-            } else {
-                await runForWin32OrDarwin(command);
-            }
+        if (process.platform == "linux") {
+            await runCommandWithXvfb(command, directory);
+        } else {
+            await runCommand(command, directory);
         }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    } else {
-        core.setFailed("run parameter is required for xvfb");
+    }
+    catch (error) {
+        core.setFailed(error.message);
     }
 }
 
-async function runForLinux(command) {
+async function runCommandWithXvfb(command, directory) {
     await exec.exec("sudo apt-get install xvfb");
+    command = `xvfb-run --auto-servernum ${command}`;
 
     try {
-        await exec.exec(`xvfb-run --auto-servernum ${command}`);
+        await runCommand(command, directory)
     } finally {
         await cleanUpXvfb();
     }
@@ -39,8 +37,8 @@ async function cleanUpXvfb() {
     }
 }
 
-async function runForWin32OrDarwin(command) {
-    await exec.exec(command);
+async function runCommand(command, directory) {
+    await directory ? exec.exec(command, directory) : exec.exec(command);
 }
 
 main();
