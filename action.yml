@@ -7,6 +7,9 @@ inputs:
   run:
     description: 'Command to execute using xvfb'
     required: true
+  working-directory:
+    description: 'Directory to execute command on, defaults to ./'
+    required: false
 runs:
   using: 'node12'
   main: 'index.js'
