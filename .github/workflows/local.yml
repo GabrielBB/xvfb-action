@@ -9,7 +9,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Test XVFB
-        uses: ./ # Uses an action in the root directory
+        uses: ./
         with:
           run: echo 'Testing xvfb'
+
+      - name: Test XVFB with working directory
+        uses: ./
+        with:
+          working-directory: ./node_modules
+          run: echo 'Testing xvfb in custom directory'
