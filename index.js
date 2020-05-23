@@ -38,7 +38,7 @@ async function cleanUpXvfb() {
 }
 
 async function runCommand(command, directory) {
-    await directory ? exec.exec(command, directory) : exec.exec(command);
+    await directory ? exec.exec(command, [], {cwd: directory}) : exec.exec(command);
 }
 
 main();
