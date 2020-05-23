@@ -21,4 +21,4 @@ jobs:
           working-directory: ./node_modules
           run: |
             echo 'Testing xvfb in custom directory'
-            ls
+            pwd
