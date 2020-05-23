@@ -19,6 +19,4 @@ jobs:
         uses: ./
         with:
           working-directory: ./node_modules
-          run: |
-            echo 'Testing xvfb in custom directory'
-            echo "`pwd`"
+          run: pwd
