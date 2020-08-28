@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run headless test
-        uses: GabrielBB/xvfb-action@v1.3
+        uses: GabrielBB/xvfb-action@v1.4
         with:
           working-directory: ./ #optional
           run: npm test
