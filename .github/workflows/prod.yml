@@ -18,3 +18,8 @@ jobs:
         with:
           working-directory: ./node_modules
           run: pwd
+      - name: Test using major tag
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          working-directory: ./node_modules
+          run: pwd
