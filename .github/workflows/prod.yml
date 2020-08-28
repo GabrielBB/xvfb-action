@@ -13,3 +13,8 @@ jobs:
         uses: GabrielBB/xvfb-action@v1.4
         with:
           run: echo 'Testing xvfb'
+      - name: Test XVFB with working directory
+        uses: GabrielBB/xvfb-action@v1.4
+        with:
+          working-directory: ./node_modules
+          run: pwd
