@@ -1,7 +1,7 @@
 
 # ❌🖥️ XVFB Github Action
 
-This Github Action installs [XVFB](http://elementalselenium.com/tips/38-headless)  and runs your headless tests with it. It cleans up the xvfb process after your tests are done. If it detects you're not using linux then your tests still run, but without xvfb, which is very practical for multi-platform workflows.
+This action installs [XVFB](http://elementalselenium.com/tips/38-headless)  and runs your headless tests with it. It cleans up the xvfb process after your tests are done. If it detects you're not using linux then your tests still run, but without xvfb, which is very practical for multi-platform workflows.
 
 ### Example usage
 
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run headless test
-        uses: GabrielBB/xvfb-action@v1.2
+        uses: GabrielBB/xvfb-action@v1.3
         with:
           working-directory: ./ #optional
           run: npm test
