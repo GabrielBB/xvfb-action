@@ -10,7 +10,7 @@
   "author": { "name": "Gabriel Basilio", "email": "gabrielbb0306@gmail.com", "url": "http://github.com/GabrielBB" },
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.2.2",
+    "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.3"
   }
 }
