@@ -22,7 +22,8 @@ jobs:
           run: pwd
 
       - name: Test XVFB with options
+        if: ${{ matrix.os == ubuntu-latest }}
         uses: ./
         with:
           options: -screen 0 1600x1200x24
-          run: xrandr || exit 0
+          run: xrandr
