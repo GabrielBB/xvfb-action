@@ -21,7 +21,7 @@ async function main() {
 
 async function runCommandWithXvfb(command, directory, options) {
     await exec.exec("sudo apt-get install xvfb");
-    const optionsArgument = options ? `-s ${options.replace(/\s/g, '\\ ')}` : '';
+    const optionsArgument = options ? `-s "${options}"` : '';
     command = `xvfb-run --auto-servernum ${optionsArgument} ${command}`;
 
     try {
