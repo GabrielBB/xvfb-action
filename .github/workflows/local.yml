@@ -20,3 +20,9 @@ jobs:
         with:
           working-directory: ./node_modules
           run: pwd
+
+      - name: Test XVFB with options
+        uses: ./
+        with:
+          options: -screen 0 1600x1200x24
+          run: xrandr
