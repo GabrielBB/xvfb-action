@@ -10,6 +10,9 @@ inputs:
   working-directory:
     description: 'Directory to execute command on, defaults to ./'
     required: false
+  options:
+    description: 'XServer options'
+    required: false
 runs:
   using: 'node12'
   main: 'index.js'
