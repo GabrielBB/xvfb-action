@@ -6,9 +6,10 @@ async function main() {
     try {
         const command = core.getInput('run', { required: true });
         const directory = core.getInput('working-directory');
+        const serverOptions = core.getInput('options');
 
         if (process.platform == "linux") {
-            await runCommandWithXvfb(command, directory);
+            await runCommandWithXvfb(command, directory, serverOptions);
         } else {
             await runCommand(command, directory);
         }
@@ -18,9 +19,10 @@ async function main() {
     }
 }
 
-async function runCommandWithXvfb(command, directory) {
+async function runCommandWithXvfb(command, directory, options) {
     await exec.exec("sudo apt-get install -y xvfb");
-    command = `xvfb-run --auto-servernum ${command}`;
+    const optionsArgument = options ? `-s "${options}"` : '';
+    command = `xvfb-run --auto-servernum ${optionsArgument} ${command}`;
 
     try {
         await runCommand(command, directory)
