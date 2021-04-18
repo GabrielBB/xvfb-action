@@ -20,6 +20,7 @@ jobs:
       - name: Run headless test
         uses: GabrielBB/xvfb-action@v1
         with:
-          working-directory: ./ #optional
           run: npm test
+          working-directory: ./ #optional
+          options: #optional
 ```
