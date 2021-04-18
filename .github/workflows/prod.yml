@@ -10,16 +10,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Test XVFB
-        uses: GabrielBB/xvfb-action@v1.4
+        uses: GabrielBB/xvfb-action@v1.5
         with:
           run: echo 'Testing xvfb'
       - name: Test XVFB with working directory
-        uses: GabrielBB/xvfb-action@v1.4
+        uses: GabrielBB/xvfb-action@v1.5
         with:
           working-directory: ./node_modules
           run: pwd
       - name: Test XVFB with options
-        uses: GabrielBB/xvfb-action@v1.4
+        uses: GabrielBB/xvfb-action@v1.5
         with:
           options: -screen 0 1600x1200x24
           run: echo 'Testing xvfb'
