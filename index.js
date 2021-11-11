@@ -4,14 +4,21 @@ const exec = require('@actions/exec');
 async function main() {
 
     try {
-        const command = core.getInput('run', { required: true });
+        if (process.platform == "linux") {
+            await exec.exec("sudo apt-get install -y xvfb");
+        }
+
+        const commands = core.getInput('run', { required: true }).split("\n");
         const directory = core.getInput('working-directory');
         const serverOptions = core.getInput('options');
 
-        if (process.platform == "linux") {
-            await runCommandWithXvfb(command, directory, serverOptions);
-        } else {
-            await runCommand(command, directory);
+        for (i in commands) {
+            if (process.platform == "linux") {
+                console.log('Command: ' + commands[i]);
+                await runCommandWithXvfb(commands[i], directory, serverOptions);
+            } else {
+                await runCommand(commands[i], directory);
+            }
         }
     }
     catch (error) {
@@ -20,7 +27,6 @@ async function main() {
 }
 
 async function runCommandWithXvfb(command, directory, options) {
-    await exec.exec("sudo apt-get install -y xvfb");
     const optionsArgument = options ? `-s "${options}"` : '';
     command = `xvfb-run --auto-servernum ${optionsArgument} ${command}`;
 
