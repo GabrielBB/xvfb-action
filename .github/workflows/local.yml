@@ -29,6 +29,7 @@ jobs:
           run: xrandr
 
       - name: Test XVFB with multiple commands 
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: ./
         with:
           options: -screen 0 1600x1200x24
