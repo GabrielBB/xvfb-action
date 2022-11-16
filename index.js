@@ -4,8 +4,10 @@ const exec = require('@actions/exec');
 async function main() {
 
     try {
+        const skipSudo = !!core.getInput('skip-sudo');
+        const sudoPrefix = skipSudo ? '' : 'sudo ';
         if (process.platform == "linux") {
-            await exec.exec("sudo apt-get install -y xvfb");
+            await exec.exec(`${sudoPrefix} apt-get install -y xvfb`);
         }
 
         const commands = core.getInput('run', { required: true }).split("\n");
