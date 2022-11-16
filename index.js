@@ -41,7 +41,7 @@ async function runCommandWithXvfb(command, directory, options) {
 
 async function cleanUpXvfb() {
     try {
-        await exec.exec("bash", [`${__dirname}/cleanup.sh`]);
+        await exec.exec("bash", [`${__dirname}/cleanup.sh ${sudoPrefix}`]);
     } catch {
 
     }
