@@ -4,10 +4,13 @@ const exec = require('@actions/exec');
 async function main() {
 
     try {
-        const skipSudo = !!core.getInput('skip-sudo');
-        const sudoPrefix = skipSudo ? '' : 'sudo ';
         if (process.platform == "linux") {
-            await exec.exec(`${sudoPrefix} apt-get install -y xvfb`);
+            try {
+                await exec.exec(`sudo apt-get install -y xvfb`);
+            } catch(error) {
+                core.debug("Failed to install xvfb with sudo, trying without");
+                await exec.exec(`apt-get install -y xvfb`);
+            }
         }
 
         const commands = core.getInput('run', { required: true }).split("\n");
@@ -41,9 +44,13 @@ async function runCommandWithXvfb(command, directory, options) {
 
 async function cleanUpXvfb() {
     try {
-        await exec.exec("bash", [`${__dirname}/cleanup.sh ${sudoPrefix}`]);
+        try {
+            await exec.exec("bash", [`sudo ${__dirname}/cleanup.sh`]);
+        } catch {
+            await exec.exec("bash", [`${__dirname}/cleanup.sh`]);
+        }
     } catch {
-
+        core.debug('Cleanup failed');
     }
 }
 

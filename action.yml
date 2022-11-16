@@ -7,8 +7,6 @@ inputs:
   run:
     description: 'Command to execute using xvfb'
     required: true
-  skip-sudo:
-    description: "Add this option with any value, if you want to run commands without sudo"
   working-directory:
     description: 'Directory to execute command on, defaults to ./'
     required: false
