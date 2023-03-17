@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "xvfb-action",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Run your tests headlessly",
   "license": "ISC",
   "author": "Ian Smith <hello@iks.codes>",
