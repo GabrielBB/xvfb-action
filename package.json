@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "xvfb-action",
   "version": "1.0.1",
   "description": "Run your tests headlessly",
