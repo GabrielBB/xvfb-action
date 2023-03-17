@@ -1,8 +1,8 @@
-name: 'gabrielbb/xvfb-action'
-description: 'Run your headless tests with XVFB'
+name: 'smithki/xvfb-action'
+description: 'Run your headless integration tests with XVFB and Node v16.x'
 branding:
-  icon: airplay
-  color: black
+  icon: aperture
+  color: yellow
 inputs:
   run:
     description: 'Command to execute using xvfb'
@@ -14,5 +14,5 @@ inputs:
     description: 'XServer options'
     required: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'
