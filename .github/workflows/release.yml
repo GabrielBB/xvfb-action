@@ -29,10 +29,21 @@ jobs:
           restore-keys: |
             npm-deps-${{ hashFiles('package-lock.json') }}
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+        with:
+          author_name: Ian Smith
+          author_email: hello@iks.codes
+          message: 'Push build [skip ci]'
+
       - name: Create Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm ci
-          npm run build
-          npx auto shipit
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+        run: npx auto shipit
