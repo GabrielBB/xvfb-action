@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "xvfb-action",
-  "version": "1.0.4",
+  "version": "0.0.0",
   "description": "Run your tests headlessly",
   "license": "ISC",
   "author": "Ian Smith <hello@iks.codes>",
@@ -19,6 +19,11 @@
   "devDependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
+    "@auto-it/all-contributors": "~10.43.0",
+    "@auto-it/git-tag": "~10.43.0",
     "@vercel/ncc": "~0.36.1"
+  },
+  "dependencies": {
+    "auto": "~10.43.0"
   }
 }

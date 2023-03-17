@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "git-tag",
+    "all-contributors",
+    "released"
+  ],
+  "owner": "smithki",
+  "repo": "xvfb-action",
+  "name": "Ian Smith",
+  "email": "hello@iks.codes"
+}
