@@ -1,0 +1,8 @@
+// List NPM dependencies here which are to be pre-compiled and saved in the Git
+// repository. This enables us to deliver a tool that has "zero dependencies"
+// and vastly improves download performance via `npx`.
+
+[
+  "@actions/core",
+  "@actions/exec"
+]
