@@ -1,7 +1,7 @@
 
 # ❌🖥️ [DEPRECATED] XVFB Github Action
 
-THIS REPO IS NO LONGER MAINTAINED, PLEASE SWITCH TO: https://github.com/coactions/setup-xvfb
+THIS REPO IS NO LONGER MAINTAINED, GITHUB ACTIONS [ALREADY INCLUDES XVFB](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md)
 
 This action installs [XVFB](http://elementalselenium.com/tips/38-headless) and runs your headless tests with it. It cleans up the xvfb process after your tests are done. If it detects you're not using linux then your tests still run, but without xvfb, which is very practical for multi-platform workflows.
 
