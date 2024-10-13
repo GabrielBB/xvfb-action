@@ -1,18 +1,18 @@
-name: 'gabrielbb/xvfb-action'
-description: 'Run your headless tests with XVFB'
+name: "gabrielbb/xvfb-action"
+description: "Run your headless tests with XVFB"
 branding:
   icon: airplay
   color: black
 inputs:
   run:
-    description: 'Command to execute using xvfb'
+    description: "Command to execute using xvfb"
     required: true
   working-directory:
-    description: 'Directory to execute command on, defaults to ./'
+    description: "Directory to execute command on, defaults to ./"
     required: false
   options:
-    description: 'XServer options'
+    description: "XServer options"
     required: false
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: "node12"
+  main: "index.js"
