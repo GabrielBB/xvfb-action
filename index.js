@@ -5,7 +5,8 @@ async function main() {
 
     try {
         if (process.platform == "linux") {
-            await exec.exec("sudo apt-get update && sudo apt-get install -y x11-utils xvfb");
+           await exec.exec("sudo apt-get update");
+           await exec.exec("sudo apt-get install -y x11-utils xvfb");
         }
 
         const commands = core.getInput('run', { required: true }).split("\n");
