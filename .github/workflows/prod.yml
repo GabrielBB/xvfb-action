@@ -1,3 +1,4 @@
+name: Prod
 on: [push]
 
 jobs:
